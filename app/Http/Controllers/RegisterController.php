@@ -10,7 +10,7 @@ class RegisterController extends Controller
 {
     public function showForm()
     {
-        return view('register');
+        return view('home');
     }
     public function submitForm(Request $request)
     {
@@ -27,5 +27,15 @@ class RegisterController extends Controller
             'password' => Hash::make($validate['password']),
         ]);
         return redirect('/')->with('success','kihkihi');
+    }
+    public function index(Request $request)
+    {
+        $search = $request->input('$serch');
+        $users = User::when($search, function ($query, $search)
+        {
+            return $query->where('name','like',"%{$search}%")
+                         ->orWhere('email','like',"%{$search}%");
+        })->paginate(10);
+        return view('forms',compact('users','search'));
     }
 }
