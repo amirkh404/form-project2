@@ -44,7 +44,6 @@
                 <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transetion duration-300">ثبت نام</button>
             </div>
         </form>
-        <a href="/forms">جست و جو</a>
     </div>
 </body>
 </html>
